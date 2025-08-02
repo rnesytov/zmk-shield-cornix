@@ -6,6 +6,7 @@ url:
 requires: [nrfmicro_13]
 features:
   - keys
+  - encoders
 siblings:
   - cornix_left
   - cornix_right
