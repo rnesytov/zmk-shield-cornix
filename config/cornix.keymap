@@ -17,6 +17,8 @@
 
 &sk { quick-release; };
 
+&mmv { acceleration-exponent = <2>; };
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -39,37 +41,46 @@
             mods = <(MOD_LSFT)>;
         };
 
-        mouse_move_up: mouse_move_up {
+        MOVE_SCRL_UP: MOVE_SCRL_UP {
             compatible = "zmk,behavior-mod-morph";
-            label = "MOUSE_MOVE_UP";
-            bindings = <&mmv MOVE_UP>, <&mmv MOVE_Y(500)>;
+            label = "MOVE_SCRL_UP";
+            bindings = <&mmv MOVE_UP>, <&msc SCRL_UP>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
 
-        mouse_move_down: mouse_move_down {
+        MOVE_SCRL_DOWN: MOVE_SCRL_DOWN {
             compatible = "zmk,behavior-mod-morph";
-            label = "MOUSE_MOVE_DOWN";
-            bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_Y(-500)>;
+            label = "MOVE_SCRL_DOWN";
+            bindings = <&mmv MOVE_DOWN>, <&msc SCRL_DOWN>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
 
-        mouse_move_left: mouse_move_left {
+        MOVE_SCRL_LEFT: MOVE_SCRL_LEFT {
             compatible = "zmk,behavior-mod-morph";
-            label = "MOUSE_MOVE_LEFT";
-            bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_X(-500)>;
+            label = "MOVE_SCRL_LEFT";
+            bindings = <&mmv MOVE_LEFT>, <&msc SCRL_LEFT>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
 
-        mouse_move_right: mouse_move_right {
+        MOVE_SCRL_RIGHT: MOVE_SCRL_RIGHT {
             compatible = "zmk,behavior-mod-morph";
-            label = "MOUSE_MOVE_RIGHT";
-            bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_X(500)>;
+            label = "MOVE_SCRL_RIGHT";
+            bindings = <&mmv MOVE_RIGHT>, <&msc SCRL_RIGHT>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        BKSPC_DEL: BKSPC_DEL {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BKSPC_DEL";
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
@@ -87,10 +98,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB           &kp Q  &kp W     &kp E         &kp R  &kp T                                          &kp Y          &kp U  &kp I      &kp O       &kp P          &kp LBKT
-&mt LCTRL ESCAPE  &kp A  &kp S     &kp D         &kp F  &kp G                                          &kp H          &kp J  &kp K      &kp L       &kp SEMICOLON  &kp SQT
-&sk LSHFT         &kp Z  &kp X     &kp C         &kp V  &kp B      &kp C_PLAY_PAUSE  &kp C_PLAY_PAUSE  &kp N          &kp M  &kp COMMA  &kp PERIOD  &kp SLASH      &sk RIGHT_SHIFT
-&kp LCTRL         &mo 3  &kp LGUI  &kp LEFT_ALT  &sl 1  &kp SPACE                                      &kp BACKSPACE  &mo 2  &kp ENTER  &kp HOME    &kp END        &kp RCTRL
+&kp TAB           &kp Q  &kp W     &kp E         &kp R  &kp T                                          &kp Y       &kp U  &kp I      &kp O       &kp P          &kp LBKT
+&mt LCTRL ESCAPE  &kp A  &kp S     &kp D         &kp F  &kp G                                          &kp H       &kp J  &kp K      &kp L       &kp SEMICOLON  &kp SQT
+&sk LSHFT         &kp Z  &kp X     &kp C         &kp V  &kp B      &kp C_PLAY_PAUSE  &kp C_PLAY_PAUSE  &kp N       &kp M  &kp COMMA  &kp PERIOD  &kp SLASH      &sk RIGHT_SHIFT
+&kp LCTRL         &mo 3  &kp LGUI  &kp LEFT_ALT  &sl 1  &kp SPACE                                      &BKSPC_DEL  &mo 2  &kp ENTER  &kp HOME    &kp END        &kp RCTRL
             >;
 
             sensor-bindings =
@@ -121,10 +132,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &none             &mouse_move_up    &none              &none   &none                                    &none   &none   &none   &none   &none   &none
-&trans  &mouse_move_left  &mouse_move_down  &mouse_move_right  &none   &none                                    &none   &none   &none   &none   &none   &none
-&trans  &none             &none             &none              &none   &none                    &trans  &trans  &none   &none   &none   &none   &trans  &trans
-&trans  &trans            &trans            &trans             &trans  &left_click_right_click                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &none            &MOVE_SCRL_UP    &none             &none   &none                                    &none   &none   &none   &none   &none   &none
+&trans  &MOVE_SCRL_LEFT  &MOVE_SCRL_DOWN  &MOVE_SCRL_RIGHT  &none   &none                                    &none   &none   &none   &none   &none   &none
+&trans  &none            &none            &none             &none   &none                    &trans  &trans  &none   &none   &none   &none   &trans  &trans
+&trans  &trans           &trans           &trans            &trans  &left_click_right_click                  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
