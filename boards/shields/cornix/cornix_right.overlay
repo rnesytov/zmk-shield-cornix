@@ -30,7 +30,7 @@
 &default_transform {
 	col-offset = <7>;
 };
-// rgb,SPI
+// RGB SPI configuration for right side (P0.13)
 &pinctrl {
     spi1_default: spi1_default {
         group1 {

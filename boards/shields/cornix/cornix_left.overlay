@@ -28,7 +28,7 @@
         ;
 };
 
-// rgb,SPI
+// RGB SPI configuration for left side (P0.24)
 &pinctrl {
     spi1_default: spi1_default {
         group1 {

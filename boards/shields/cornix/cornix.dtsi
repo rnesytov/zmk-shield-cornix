@@ -23,7 +23,7 @@
 };
 
 &spi1 {
-    status = "disabled";
+    status = "okay";
 
     compatible = "nordic,nrf-spim";
 
@@ -33,15 +33,15 @@
         pinctrl-names = "default", "sleep";
 
     led_strip: ws2812@0 {
-        status = "disabled";
+        status = "okay";
         compatible = "worldsemi,ws2812-spi";
 
         /* SPI */
         reg = <0>; /* ignored, but necessary for SPI bindings */
-        spi-max-frequency = <8000000>;  // 8MHz
+        spi-max-frequency = <4000000>;  // 4MHz for better WS2812 compatibility
 
         /* WS2812 */
-        chain-length = <2>; 
+        chain-length = <2>; // 2 LEDs per half
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
@@ -59,6 +59,7 @@
     };
     chosen {
         zmk,battery = &vbatt;
+        zmk,underglow = &led_strip;
     };
 
     // Encoder definitions - hardware specific GPIO pins set in overlays
