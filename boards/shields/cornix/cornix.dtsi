@@ -10,7 +10,7 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
-		zmk,physical-layout = &layout_50;
+        zmk,physical-layout = &layout_50;
     };
 
 
@@ -58,24 +58,26 @@
         status-ws2812 = &led_strip;
     };
     chosen {
-        zmk,bttery = &vbatt;
+        zmk,battery = &vbatt;
     };
 
+    // Encoder definitions - hardware specific GPIO pins set in overlays
     left_encoder: encoder_left {
         compatible = "alps,ec11";
-        steps = <80>;
+        steps = <80>; // Total pulses per complete rotation
         status = "disabled";
     };
 
     right_encoder: encoder_right {
         compatible = "alps,ec11";
-        steps = <80>;
+        steps = <80>; // Total pulses per complete rotation
         status = "disabled";
     };
 
+    // Sensor configuration for keymap integration
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder>;
-        triggers-per-rotation = <20>;
+        sensors = <&left_encoder>; // Default to left, overridden in right overlay
+        triggers-per-rotation = <20>; // How many keymap events per rotation
     };
 };
