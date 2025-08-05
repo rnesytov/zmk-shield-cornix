@@ -58,4 +58,13 @@
     };
 };
 
-//vim: set ft=dts
+&right_encoder {
+    status = "okay";
+    a-gpios = <&gpio1 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+};
+
+&sensors {
+    sensors = <&right_encoder>;
+};
+

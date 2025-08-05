@@ -1,7 +1,3 @@
-# Copyright (c) 2020 The ZMK Contributors
-# SPDX-License-Identifier: MIT
-
-
 ## Main device (left side)
 if SHIELD_CORNIX_LEFT
 
@@ -53,14 +49,5 @@ config ZMK_SPLIT
 
 config ZMK_BLE
 	default y
-
-
-## disable rgb by default
-config WS2812_STRIP
-	default n
-config ZMK_RGB_UNDERGLOW
-	default n
-config ZMK_RGB_UNDERGLOW_EXT_POWER
-	default n
 
 endif # SHIELD_CORNIX_LEFT || SHIELD_CORNIX_RIGHT

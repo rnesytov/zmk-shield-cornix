@@ -46,39 +46,9 @@
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
     };
-
-    left_encoder: encoder_left {
-        compatible = "alps,ec11";
-        a-gpios = <&gpio1 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <80>;
-        status = "okay";
-    };
-
-    /* right_encoder: encoder_right { */
-    /*     compatible = "alps,ec11"; */
-    /*     a-gpios = <&gpio1 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; */
-    /*     b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; */
-    /*     steps = <80>; */
-    /*     status = "okay"; */
-    /* }; */
-
-    sensors: sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder>;
-        triggers-per-rotation = <20>;
-    };
 };
 
 / {
-    // rgb_underglow: rgb_underglow {
-    //     status = "okay";
-    //     compatible = "zmk,rgb-underglow";
-    //     label = "RGB";
-    //     chain-length = <2>;
-    //     brightness = <60>;
-    //     effect = "breathing";
-    // };
     soft_off_wakers {
         compatible = "zmk,soft-off-wakeup-sources";
         wakeup-sources = <&kscan0>;
@@ -89,7 +59,23 @@
     };
     chosen {
         zmk,bttery = &vbatt;
-		// widget,rgb = &led_strip;
-		// zmk,underglow = &led_strip;
+    };
+
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        steps = <80>;
+        status = "disabled";
+    };
+
+    right_encoder: encoder_right {
+        compatible = "alps,ec11";
+        steps = <80>;
+        status = "disabled";
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <20>;
     };
 };
