@@ -65,8 +65,5 @@
     b-gpios = <&gpio1 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 };
 
-// Override sensors to use right encoder for this half
-&sensors {
-    sensors = <&right_encoder>;
-};
+// Sensors array stays the same for split - both encoders listed
 

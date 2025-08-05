@@ -75,10 +75,10 @@
         status = "disabled";
     };
 
-    // Sensor configuration for keymap integration
+    // Sensor configuration for keymap integration  
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder>; // Default to left, overridden in right overlay
+        sensors = <&left_encoder &right_encoder>; // Both encoders in array
         triggers-per-rotation = <20>; // How many keymap events per rotation
     };
 };
