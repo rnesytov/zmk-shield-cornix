@@ -32,7 +32,7 @@
             bindings =
                 <&kp LA(SPACE)>,
                 <&macro_wait_time 250>,
-                <&kp S &kp L &kp E &kp K &kp P>,
+                <&kp S &kp L &kp E &kp E &kp P>,
                 <&macro_tap_time 250>,
                 <&kp ENTER>;
 
